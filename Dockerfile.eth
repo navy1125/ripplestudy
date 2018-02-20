@@ -1,0 +1,68 @@
+FROM ubuntu:16.04
+MAINTAINER navy1125
+
+#RUN sed -i 's/archive.ubuntu.com/mirrors.163.com/' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/' /etc/apt/sources.list
+#RUN sed -i 's/archive.ubuntu.com/mirror.neu.edu.cn/' /etc/apt/sources.list
+#RUN sed -i 's/archive.ubuntu.com/mirror.tju.edu.cn/' /etc/apt/sources.list
+RUN apt-get -y update
+RUN apt-get install -y apt-utils
+RUN apt-get install -y language-pack-zh-hans
+ENV DEBIAN_FRONTEND noninteractive
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
+RUN apt-get install --fix-missing --force-yes -y \
+    vim \
+    locales \
+    python3 \
+    python3-pip python-dev build-essential \
+    psmisc \
+    inetutils-ping \
+    mysql-client \
+    mysql-server \
+    build-essential \
+    libtool \
+    autotools-dev \
+    automake \
+    libz-dev \
+    libcurl4-openssl-dev \
+    libmysqlclient-dev \
+    libfreetype6-dev \
+    libreadline-dev \
+    libssl-dev \
+    git \
+    gawk \
+    gdb \
+    subversion	\
+    wget	\
+    ctags	\
+    telnet	\
+    ccache	\
+    curl	\
+    cmake \
+    lua5.1
+
+RUN export LC_ALL=C
+RUN pip install --upgrade pip
+RUN pip install --upgrade virtualenv
+RUN pip install eth-tester
+RUN pip install ethereum
+
+# Set Timezone
+#RUN echo "Asia/Shanghai" > /etc/timezone
+#RUN dpkg-reconfigure -f noninteractive tzdata
+
+#ADD bashrc /root/.my_bashrc
+#RUN echo "source ~/.my_bashrc" >> ~/.bashrc
+
+#RUN wget -q -O /root/.bashrc "https://github.com/navy1125/vimrc/blob/master/bashrc"
+#RUN wget -q -O /root/.vimrc "https://github.com/navy1125/vimrc/blob/master/vimrc"
+
+RUN git clone https://github.com/navy1125/vimrc.git /root/vimrc
+RUN mv /root/vimrc/vimrc /root/.vimrc
+RUN mv /root/vimrc/bashrc /root/.bashrc
+#mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+#vim +PluginInstall +qall

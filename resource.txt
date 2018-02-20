@@ -1,0 +1,9 @@
+https://www.cybtc.com/thread-15905-1-1.html
+
+
+获得一个钱包地址：（钱包，交易网站均可）；
+图形钱包: https://github.com/ethereum/mist/releases
+命令行客户端Geth：https://github.com/ethereum/go-ethereum/releases/
+交易所：
+国内  云币 https://yunbi.com/
+交易量最大的  P网 https://poloniex.com  (注册时需翻墙获取验证码)
