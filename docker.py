@@ -97,6 +97,6 @@ parser.add_argument("-i", "--image", dest="image", help="docker build image")
 opts = parser.parse_args()
 
 if opts.build:
-    docker_build("eth",opts.name,opts.image)
+    docker_build("rip",opts.name,opts.image)
 else:
-    docker_run("eth",opts.name,opts.image)
+    docker_run("rip",opts.name,opts.image)
